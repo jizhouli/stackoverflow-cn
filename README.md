@@ -8,3 +8,8 @@ A website that translates stackoverflow articles to chinese WITH ADVERTISEMENTS.
 - [ ] purchase RDS service of Aliyun
 - [ ] create tables and create data store script
 - [ ] store data to RDS 
+
+###Issues
+- [ ] python parse large xml
+- [ ] mysql bulk insert
+
