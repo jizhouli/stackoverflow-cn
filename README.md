@@ -1,5 +1,5 @@
 # stackoverflow-cn
-A website that translates stackoverflow articles to chinese WITH ADVERTISEMENTS.
+A website that translates stackoverflow articles to chinese for English bad programmers.
 
 ###Todo
 - [x] investigate stackoverflow data dump archive service
