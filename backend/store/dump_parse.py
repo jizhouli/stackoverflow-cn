@@ -90,7 +90,7 @@ class DumpParse(object):
             vals.append(val)
         vals = ','.join(vals)
 
-        sql = 'INSERT INTO %(table)s (%(cols)s) VALUES %(vals)s;'
+        sql = 'INSERT IGNORE INTO %(table)s (%(cols)s) VALUES %(vals)s;'
         para = {
                 'table': table,
                 'cols': ','.join(map(lambda x: x.__name__, cols)),
@@ -126,11 +126,9 @@ class DumpParse(object):
             # 批量执行插入操作
             if len(insert_value_batch) % config.INSERT_BATCH_SIZE == 0 and len(insert_value_batch) > 0:
                 print cnt
-                time.sleep(1)
+                #time.sleep(1)
                 self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
                 insert_value_batch = []
-                #TODO
-                break
             cnt += 1
         # 插入剩余数据
         if len(insert_value_batch) > 0:

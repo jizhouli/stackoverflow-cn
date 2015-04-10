@@ -58,7 +58,10 @@ class Meta(object):
             return s
             #return '"%s"' % self._value.replace('"', '\\"') # escape double quotes to avoid sql string's
         elif self._type == date:
-            return '"%s"' % self._value
+            if self._value:
+                return '"%s"' % self._value
+            else:
+                return '"1971-01-01 00:00:00.000"'
         else:
             return '"%s"' % self._value
 
