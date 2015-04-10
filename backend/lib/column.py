@@ -46,9 +46,17 @@ class Meta(object):
             return '""'
 
         if self._type == int:
-            return '%s' % self._value
+            if self._value:
+                return '%s' % self._value
+            else:
+                return '0' # to insert null int, default 0
         elif self._type == str:
-            return '"%s"' % self._value
+            s = self._value
+            s = s.replace('\\', '\\\\') # deal with situation [ \" ]
+            s = s.replace('"', '\\"')
+            s = '"%s"' % s
+            return s
+            #return '"%s"' % self._value.replace('"', '\\"') # escape double quotes to avoid sql string's
         elif self._type == date:
             return '"%s"' % self._value
         else:
