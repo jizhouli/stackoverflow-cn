@@ -6,11 +6,13 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] investigate content crawling of stackoverflow
 - [x] investigate dump data format
 - [x] create posts table and modeling columns
-- [ ] purchase RDS service of Aliyun
-- [ ] create tables and create data store script
+- [x] purchase RDS service of Aliyun
+- [x] create tables and create data store script
+- [ ] download dump data
 - [ ] store data to RDS 
 
 ###Issues
 - [x] python parse large xml
-- [ ] mysql bulk insert
+- [x] mysql bulk insert
+- [ ] large data translation
 
