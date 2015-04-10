@@ -8,5 +8,7 @@ ONLINE_DB = {
         'port': 3306,
         'user': 'himalayas',
         'password': 'himalayas2015',
-        'db': 'stackoverflow',
+        'db': 'stackoverflow_dev',#'stackoverflow',
         }
+
+INSERT_BATCH_SIZE = 10000
