@@ -14,5 +14,5 @@ A website that translates stackoverflow articles to chinese for English bad prog
 ###Issues
 - [x] python parse large xml
 - [x] mysql bulk insert
-- [ ] large data translation
+- [x] large data translation: translate title and add web translation toolkit to the page
 
