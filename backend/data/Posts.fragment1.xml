@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<posts>
+ <row Id="930" PostTypeId="2" ParentId="922" CreationDate="2010-08-20T19:10:02.080" Score="10" Body="&lt;p&gt;Here's one workaround: &lt;code&gt;diff&lt;/code&gt; seems to accept &amp;lt;(&lt;em&gt;expr&lt;/em&gt;) as arguemnts:&lt;/p&gt;&#xA;&#xA;&lt;pre&gt;&lt;code&gt;diff &amp;lt;(ssh \&quot;cat path/file.name/&quot;) &amp;lt;(cat path/file.name)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;" OwnerUserId="394" LastEditorUserId="394" LastEditDate="2010-08-20T19:21:54.927" LastActivityDate="2010-08-20T19:21:54.927" CommentCount="3"/>
+</posts>
