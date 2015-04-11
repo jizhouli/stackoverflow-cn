@@ -11,4 +11,4 @@ ONLINE_DB = {
         'db': 'stackoverflow_dev',#'stackoverflow',
         }
 
-INSERT_BATCH_SIZE = 10000
+INSERT_BATCH_SIZE = 5000
