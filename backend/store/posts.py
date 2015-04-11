@@ -164,11 +164,8 @@ if __name__ == '__main__':
             password = config.ONLINE_DB['password'],
             db = config.ONLINE_DB['db'],
             )
-    data_path = '../data/'
     post_xml_file = '../data/Posts.xml'
-    if len(sys.argv) < 2:
-        post_xml_file = data_path + 'Posts.xml'
-    else:
-        post_xml_file = data_path + sys.argv[1]
+    if len(sys.argv) == 2:
+        post_xml_file = sys.argv[1]
     posts.load_posts(post_xml_file)
 
