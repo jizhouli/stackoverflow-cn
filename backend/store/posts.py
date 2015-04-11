@@ -23,17 +23,17 @@ from pylogger.pylogger import logger
 # add self-defined lib
 sys.path.append("../")
 from lib.umysql import Mysql
-from lib.column import *
+from lib.posts_column import *
 
 import config
 
-class DumpParse(object):
+class Posts(object):
     '''
     parse dump data from stackoverflow
     '''
     def __init__(self):
 
-        #self.post_column_types = [Id, PostTypeId, AcceptedAnswerId, ParentID, CreationDate, Score, ViewCount, Body, OwnerUserId, OwnerDisplayName, LastEditorUserId, LastEditorDisplayName, LastEditDate, LastActivityDate, Title, Tags, AnswerCount, CommentCount, FavoriteCount, ClosedDate, CommunityOwnedDate]
+        self.total = 0
         self.posts = {
                 'table': 'Posts',
                 'column_types': [
@@ -56,7 +56,12 @@ class DumpParse(object):
                     CreationDate,
                 ],
                 }
-        pass
+
+        logger.info('%s: table %s, column "%s"' % (
+            sys._getframe().f_code.co_name, 
+            self.posts['table'], 
+            ','.join(map(lambda x: x.__name__, self.posts['column_types']))
+            ))
 
     def __str__(self):
         pass
@@ -69,19 +74,15 @@ class DumpParse(object):
         self.port = port
 
         self.conn = Mysql(host=self.host, user=self.user, password=self.password, db=self.db, port=self.port)
-        #self.conn.show()
-        pass
+        logger.info('%s: %s@%s:%s %s' % (sys._getframe().f_code.co_name, self.user, self.host, self.port, self.db))
 
     def exec_insert(self, table, cols, insert_value_batch):
         # 判断column与value数目是否相等
         if len(insert_value_batch) == 0:
-            print 'insert_value_batch is emtpy'
-            print insert_value_batch
+            logger.warn('%s: insert value batch is empty' % (sys._getframe().f_code.co_name))
             return False
         if len(insert_value_batch[0]) != len(cols):
-            print 'SIZE cols %s, insert_value_batch %s' % (len(cols),  len(insert_value_batch[0]))
-            print cols
-            print  len(insert_value_batch[0])
+            logger.warn('%s: column size is not equal to value, col %s val %s' % (sys._getframe().f_code.co_name, len(cols), len(insert_value_batch[0])))
             return False
 
         vals = []
@@ -97,13 +98,20 @@ class DumpParse(object):
                 'vals': vals,
             }
         sql %= para
-        self.conn.execute(sql)
-        pass
+        try:
+            self.conn.execute(sql)
+        except Exception, e:
+            logger.error(str(e))
+            return False
+
+        self.total += len(insert_value_batch)
+        logger.info('%s: insert %s/%s' % (sys._getframe().f_code.co_name, len(insert_value_batch), self.total))
+        return True
 
     def load_posts(self, file_path):
         insert_value_batch = []
-        cnt = 0
         # load file incrementally
+        logger.info('%s: file "%s" is loading' % (sys._getframe().f_code.co_name, file_path))
         for event, elem in ET.iterparse(file_path, events=('end', )): # ignore event 'start'
             if elem.tag == 'row': # skip tag <posts>, </posts>
                 # wrap column definition to column.py
@@ -125,15 +133,14 @@ class DumpParse(object):
             elem.clear()
             # 批量执行插入操作
             if len(insert_value_batch) % config.INSERT_BATCH_SIZE == 0 and len(insert_value_batch) > 0:
-                print cnt
                 #time.sleep(1)
                 self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
                 insert_value_batch = []
-            cnt += 1
         # 插入剩余数据
         if len(insert_value_batch) > 0:
             self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
             insert_value_batch = []
+        logger.info('%s: file load done' % (sys._getframe().f_code.co_name))
         return
 
     def load_post_history(self, file_path):
@@ -149,13 +156,19 @@ class DumpParse(object):
     pass
 
 if __name__ == '__main__':
-    dp = DumpParse()
-    dp.conf_db(
+    posts = Posts()
+    posts.conf_db(
             host = config.ONLINE_DB['host'],
             port = config.ONLINE_DB['port'],
             user = config.ONLINE_DB['user'],
             password = config.ONLINE_DB['password'],
             db = config.ONLINE_DB['db'],
             )
-    dp.load_posts('../data/Posts.xml')
+    data_path = '../data/'
+    post_xml_file = '../data/Posts.xml'
+    if len(sys.argv) < 2:
+        post_xml_file = data_path + 'Posts.xml'
+    else:
+        post_xml_file = data_path + sys.argv[1]
+    posts.load_posts(post_xml_file)
 
