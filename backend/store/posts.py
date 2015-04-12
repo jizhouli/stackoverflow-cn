@@ -157,12 +157,13 @@ class Posts(object):
 
 if __name__ == '__main__':
     posts = Posts()
+    _db = config.ONLINE_DB
     posts.conf_db(
-            host = config.ONLINE_DB['host'],
-            port = config.ONLINE_DB['port'],
-            user = config.ONLINE_DB['user'],
-            password = config.ONLINE_DB['password'],
-            db = config.ONLINE_DB['db'],
+            host = _db['host'],
+            port = _db['port'],
+            user = _db['user'],
+            password = _db['password'],
+            db = _db['db'],
             )
     post_xml_file = '../data/Posts.xml'
     if len(sys.argv) == 2:
