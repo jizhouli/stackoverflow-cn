@@ -108,12 +108,18 @@ class Posts(object):
         logger.info('%s: insert %s/%s' % (sys._getframe().f_code.co_name, len(insert_value_batch), self.total))
         return True
 
-    def load_posts(self, file_path):
+    def load_posts(self, file_path, start=0, end=sys.maxint):
         insert_value_batch = []
         # load file incrementally
-        logger.info('%s: file "%s" is loading' % (sys._getframe().f_code.co_name, file_path))
+        logger.info('%s: file "%s" is loading, row range [%s, %s]' % (sys._getframe().f_code.co_name, file_path, start, end))
+        cur_iter = 0
         for event, elem in ET.iterparse(file_path, events=('end', )): # ignore event 'start'
             if elem.tag == 'row': # skip tag <posts>, </posts>
+                cur_iter += 1
+                if cur_iter < start:
+                    continue
+                if cur_iter > end:
+                    break
                 # wrap column definition to column.py
                 #rec['Id'] = elem.attrib.get('Id', 'n/a')
                 #rec['PostTypeId'] = elem.attrib.get('PostTypeId', 'n/a')
@@ -133,11 +139,15 @@ class Posts(object):
             elem.clear()
             # 批量执行插入操作
             if len(insert_value_batch) % config.INSERT_BATCH_SIZE == 0 and len(insert_value_batch) > 0:
+                logger.info('%s: batch insert row %s %s' % (sys._getframe().f_code.co_name, 
+                    cur_iter-len(insert_value_batch)+1, cur_iter))
                 #time.sleep(1)
                 self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
                 insert_value_batch = []
         # 插入剩余数据
         if len(insert_value_batch) > 0:
+            logger.info('%s: batch insert row %s %s' % (sys._getframe().f_code.co_name, 
+                    cur_iter-len(insert_value_batch)+1, cur_iter))
             self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
             insert_value_batch = []
         logger.info('%s: file load done' % (sys._getframe().f_code.co_name))
@@ -166,7 +176,10 @@ if __name__ == '__main__':
             db = _db['db'],
             )
     post_xml_file = '../data/Posts.xml'
-    if len(sys.argv) == 2:
+    if len(sys.argv) >= 2:
         post_xml_file = sys.argv[1]
-    posts.load_posts(post_xml_file)
+    if len(sys.argv) >= 4:
+        start = int(sys.argv[2])
+        end = int(sys.argv[3])
+    posts.load_posts(post_xml_file, start=start, end=end)
 
