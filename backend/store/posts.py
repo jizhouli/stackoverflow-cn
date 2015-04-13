@@ -98,11 +98,21 @@ class Posts(object):
                 'vals': vals,
             }
         sql %= para
-        try:
-            self.conn.execute(sql)
-        except Exception, e:
-            logger.error(str(e))
-            return False
+        while True:
+            try:
+                self.conn.execute(sql)
+                break
+            except Exception, e:
+                logger.error(str(e))
+                # 处理连接丢失的情况
+                # (2013, 'Lost connection to MySQL server during query')
+                # (2006, 'MySQL server has gone away')
+                if e.errno == 2013 or e.errno == 2006:
+                    self.conn.close()
+                    self.conn = Mysql(host=self.host, user=self.user, password=self.password, db=self.db, port=self.port)
+                    logger.warn('%s: reconnect %s@%s:%s %s' % (sys._getframe().f_code.co_name, self.user, self.host, self.port, self.db))
+                else:
+                    return False
 
         self.total += len(insert_value_batch)
         logger.info('%s: insert %s/%s' % (sys._getframe().f_code.co_name, len(insert_value_batch), self.total))
