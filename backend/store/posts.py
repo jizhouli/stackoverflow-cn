@@ -13,6 +13,7 @@ import os
 import sys
 import time
 
+#import lxml.etree as ET
 try:
     import xml.etree.cElementTree as ET
 except ImportError:
@@ -123,13 +124,17 @@ class Posts(object):
         # load file incrementally
         logger.info('%s: file "%s" is loading, row range [%s, %s]' % (sys._getframe().f_code.co_name, file_path, start, end))
         cur_iter = 0
-        for event, elem in ET.iterparse(file_path, events=('end', )): # ignore event 'start'
+        context = ET.iterparse(file_path, events=('end', )) # ignore event 'start'
+        for event, elem in context:
             if elem.tag == 'row': # skip tag <posts>, </posts>
                 cur_iter += 1
-                if cur_iter < start:
-                    continue
-                if cur_iter > end:
+                if cur_iter > end: # 到达插入范围终点
                     break
+
+                do_continue = False
+                if cur_iter < start:
+                    do_continue = True # continue
+
                 # wrap column definition to column.py
                 #rec['Id'] = elem.attrib.get('Id', 'n/a')
                 #rec['PostTypeId'] = elem.attrib.get('PostTypeId', 'n/a')
@@ -138,22 +143,33 @@ class Posts(object):
 
                 # 过滤空数据行（预防异常事件）
                 if not elem.attrib.get('Id', ''):
-                    continue
+                    do_continue = True # continue
 
-                insert_value = []
-                rec_list = list()
-                for column_type in self.posts['column_types']:
-                    column = column_type(elem.attrib.get(column_type.__name__, ''))
-                    insert_value.append(column.sql())
-                insert_value_batch.append(insert_value)
+                if not do_continue:
+                    insert_value = []
+                    rec_list = list()
+                    for column_type in self.posts['column_types']:
+                        column = column_type(elem.attrib.get(column_type.__name__, ''))
+                        insert_value.append(column.sql())
+                    insert_value_batch.append(insert_value)
+
+                    # 批量执行插入操作
+                    if len(insert_value_batch) % config.INSERT_BATCH_SIZE == 0 and len(insert_value_batch) > 0:
+                        logger.info('%s: batch insert row %s %s' % (sys._getframe().f_code.co_name, 
+                            cur_iter-len(insert_value_batch)+1, cur_iter))
+                        #time.sleep(1)
+                        self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
+                        insert_value_batch = []
+
+            # 每次循环保证会执行到此处，进行资源释放
+            # It's safe to call clear() here because no descendants will be accessed
             elem.clear()
-            # 批量执行插入操作
-            if len(insert_value_batch) % config.INSERT_BATCH_SIZE == 0 and len(insert_value_batch) > 0:
-                logger.info('%s: batch insert row %s %s' % (sys._getframe().f_code.co_name, 
-                    cur_iter-len(insert_value_batch)+1, cur_iter))
-                #time.sleep(1)
-                self.exec_insert(self.posts['table'], self.posts['column_types'], insert_value_batch)
-                insert_value_batch = []
+            # Also eliminate now-empty references from the root node to row (USED ONLY in lxml)
+            #while elem.getprevious() is not None:
+            #    del elem.getparent()[0]
+
+            # end for-loop
+        del context
         # 插入剩余数据
         if len(insert_value_batch) > 0:
             logger.info('%s: batch insert row %s %s' % (sys._getframe().f_code.co_name, 
