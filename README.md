@@ -11,6 +11,8 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] download dump data
 - [x] store data to RDS 
 - [ ] large table split
+- [ ] add index
+- [ ] alter table mysql engine
 
 ###Issues
 - [x] python parse large xml
