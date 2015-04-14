@@ -10,7 +10,7 @@ create table badges (
   Id INT NOT NULL PRIMARY KEY,
   UserId INT,
   Name VARCHAR(50),
-  CreationDate DATETIME
+  Date DATETIME
 );
 
 CREATE TABLE comments (
