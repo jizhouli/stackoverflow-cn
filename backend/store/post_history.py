@@ -63,9 +63,10 @@ if __name__ == '__main__':
     if len(sys.argv) >= 2:
         # python post_history.py ~/Downloads/stackoverflow-data-dump-from-MEGA/stackoverflow.com.7z/PostHistory.xml
         xml_file = sys.argv[1]
+        store.load(xml_file)
     if len(sys.argv) >= 4:
         # python post_history.py ~/Downloads/stackoverflow-data-dump-from-MEGA/stackoverflow.com.7z/PostHistory.xml 1000001 2000000
         start = int(sys.argv[2])
         end = int(sys.argv[3])
-    store.load(xml_file, start=start, end=end)
+        store.load(xml_file, start=start, end=end)
 
