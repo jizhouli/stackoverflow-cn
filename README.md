@@ -10,12 +10,16 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] create tables and create data store script
 - [x] download dump data
 - [x] store data to RDS 
-- [ ] large table split
-- [ ] add index
-- [ ] alter table mysql engine
+- [x] large table split
+- [x] add index
+- [x] alter table mysql engine
+- [ ] build web site with Django and Bootstrap
+- [ ] translate titles to Chinese and Store
 
 ###Issues
 - [x] python parse large xml
 - [x] mysql bulk insert
 - [x] large data translation: translate title and add web translation toolkit to the page
+- [ ] bootstrap usage
+- [ ] Django WSGI deployment
 
