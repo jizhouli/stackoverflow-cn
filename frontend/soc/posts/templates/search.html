@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+            th, td {
+                padding: 15px;
+            }
+        </style>
+    </head>
+    <body>
+        <p>You searched for: <strong>{{ query }}</strong></p>
+
+        {% if posts %}
+            <p>Found {{ posts|length }} post{{ posts|pluralize }}.</p>
+            <table border="1", style="width:100%">
+                <tr>
+                    <td>id</td>
+                    <td>title</td>
+                    <td>body</td>
+                    <td>tags</td>
+                    <td>viewcount</td>
+                </tr>
+                {% for post in posts %}
+                <tr>
+                    <td>{{ post.id }}</td>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.body | safe }}</td>
+                    <td>{{ post.tags }}</td>
+                    <td>{{ post.viewcount }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>no result</p>
+        {% endif %}
+    </body>
+</html>
