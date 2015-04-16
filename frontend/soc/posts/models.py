@@ -21,6 +21,7 @@ class Badges(models.Model):
     class Meta:
         managed = False
         db_table = 'badges'
+        app_label = 'posts'
 
 
 class Comments(models.Model):
@@ -34,6 +35,7 @@ class Comments(models.Model):
     class Meta:
         managed = False
         db_table = 'comments'
+        app_label = 'posts'
 
 
 class PostHistory(models.Model):
@@ -48,6 +50,7 @@ class PostHistory(models.Model):
     class Meta:
         managed = False
         db_table = 'post_history'
+        app_label = 'posts'
 
 
 class Posts(models.Model):
@@ -72,6 +75,7 @@ class Posts(models.Model):
     class Meta:
         managed = False
         db_table = 'posts'
+        app_label = 'posts'
 
 
 class Posts1(models.Model):
@@ -96,6 +100,7 @@ class Posts1(models.Model):
     class Meta:
         managed = False
         db_table = 'posts_1'
+        app_label = 'posts'
 
 
 class Posts2(models.Model):
@@ -120,6 +125,7 @@ class Posts2(models.Model):
     class Meta:
         managed = False
         db_table = 'posts_2'
+        app_label = 'posts'
 
 
 class Posts3(models.Model):
@@ -144,6 +150,7 @@ class Posts3(models.Model):
     class Meta:
         managed = False
         db_table = 'posts_3'
+        app_label = 'posts'
 
 
 class Users(models.Model):
@@ -164,6 +171,7 @@ class Users(models.Model):
     class Meta:
         managed = False
         db_table = 'users'
+        app_label = 'posts'
 
 
 class Votes(models.Model):
@@ -175,3 +183,4 @@ class Votes(models.Model):
     class Meta:
         managed = False
         db_table = 'votes'
+        app_label = 'posts'
