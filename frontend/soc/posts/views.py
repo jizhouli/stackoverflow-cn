@@ -9,6 +9,9 @@ from posts.models import Posts
 def home(request):
     return HttpResponse('hello home!')
 
+def index(request):
+    return render_to_response('index.html', {})
+
 def search(request):
     errors = []
     if 'q' in request.GET:
