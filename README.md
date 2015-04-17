@@ -14,6 +14,7 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] add index
 - [x] alter table mysql engine
 - [ ] build web site with Django and Bootstrap
+- [ ] design web ui/ue
 - [ ] translate titles to Chinese
 - [ ] sql2nosql: store posts from mysql to mongodb with all q/a in a record 
 
