@@ -14,12 +14,13 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] add index
 - [x] alter table mysql engine
 - [ ] build web site with Django and Bootstrap
-- [ ] translate titles to Chinese and Store
+- [ ] translate titles to Chinese
+- [ ] sql2nosql: store posts from mysql to mongodb with all q/a in a record 
 
 ###Issues
 - [x] python parse large xml
 - [x] mysql bulk insert
 - [x] large data translation: translate title and add web translation toolkit to the page
-- [ ] bootstrap usage
+- [x] bootstrap usage
 - [ ] Django WSGI deployment
 
