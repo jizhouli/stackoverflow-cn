@@ -17,6 +17,7 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [ ] design web ui/ue
 - [ ] translate titles to Chinese
 - [ ] sql2nosql: store posts from mysql to mongodb with all q/a in a record 
+- [ ] crawling tag description
 
 ###Issues
 - [x] python parse large xml
