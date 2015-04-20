@@ -13,13 +13,14 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] large table split
 - [x] add index
 - [x] alter table mysql engine
-- [ ] build web site with Django and Bootstrap
-- [ ] design web ui/ue
+- [x] build web site with Django and Bootstrap
+- [x] design web ui/ue
 - [ ] translate titles to Chinese
 - [ ] sql2nosql: store posts from mysql to mongodb with all q/a in a record 
 - [ ] crawling tag description
-- [ ] register domain address
+- [x] register domain address
 - [ ] buy aliyun ECS
+- [ ] build inverted index of tag column
 
 ###Issues
 - [x] python parse large xml
