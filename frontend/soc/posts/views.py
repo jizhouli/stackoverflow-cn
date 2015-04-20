@@ -9,6 +9,9 @@ from posts.models import Posts
 def home(request):
     return HttpResponse('hello home!')
 
+def bootstrap(request):
+    return render_to_response('bootstrap.html', {})
+
 def index(request):
     return render_to_response('index.html', {})
 

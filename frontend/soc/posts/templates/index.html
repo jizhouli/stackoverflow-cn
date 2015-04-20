@@ -9,187 +9,215 @@
 
 	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
 	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-
 	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 	<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<body>
+<body class="bs-docs-home">
+	<!-- 添加顶部导航条 -->
 	<div class="container">
-		<div class="row">
-		  <div class="col-md-8">
-		  	<h1>电子书格式转换<small>工具集</small></h1>
-		  	<p class="lead">
-		  	Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. <strong>Nullam id dolor id nibh ultricies vehicula</strong>.
-		 	</p>
-		 	<p class="text-left">
-			Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec ullamcorper nulla non metus auctor fringilla.
-			</p>
-			<p class="text-justify">
-			Maecenas sed diam eget risus varius blandit sit amet non magna. Donec id elit non mi porta gravida at eget metus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.
-			</p>
-			</div>
-		  <div class="col-md-4">
-		  	<address>
-		  		<strong>Justin Do It, Inc.</strong><br>
-		  		Tower A Building1, Tianzuo International Center, No.12 Zhongguancun South Rod Avenue, Haidian Distract, <br>
-		  		Beijing 10081, China <br>
-		  		<abbr title="Phone">P:</abbr> (086) 188-8888-8888<br>
-		  		<a href="mailto:">Justindoit@justinduit.com</a>
-		  	</address>
-		  </div>
-		</div>
-		<div class="row">
-		  <div class="col-md-4">
-		  	<blockquote>
-		  		<p>One bit of advice: it is important to view knowledge as sort of a semantic tree -- <strong>make sure you understand the fundamental principles, ie the trunk and big branches, before you get into the leaves/details or there is nothing for them to hang on to</strong>.</p>
-		  		<footer>Elon Musk in <cite>Redit</cite></footer>
-		  	</blockquote>
-		  </div>
-		  <div class="col-md-4">
-		  	<blockquote>
-		  		<p>I think you have an ability to think at a system level of design. To pull together design, technology and business into one package, to synthesize that package, and to feel so damn confident that you take crazy risks...</p>
-		  		<footer>Chris Anderson in <cite>TED</cite></footer>
-		  	</blockquote>
-		  </div>
-		  <div class="col-md-4">
-		  	<blockquote>
-		  		<p>I think most people can learn a lot more than they think they can. They sell themselves short without trying.</p>
-		  		<footer>Elon Musk in <cite>Redit</cite></footer>
-		  	</blockquote>
-		  </div>
-		</div>
-		<div class="row">
-		  <div class="col-md-6">
-		  	<samp>This text is meant to be treated as sample output from a computer program.</samp>
-		  </div>
-		  <div class="col-md-6">
-		  	To switch directories, type <kbd>cd</kbd> followed by the name of the directory.<b>
-To edit settings, press <kbd><kbd>ctrl</kbd> + <kbd>,</kbd></kbd>
-		  </div>
-		</div>
-	</div>
-	<p></p>
-	<div class="container">
-		<div class="row">
-		  <div class="col-md-12">
-		  	<table class="table table-hover">
-		        <tr>
-		          <th>#</th>
-		          <th>First Name</th>
-		          <th>Last Name</th>
-		          <th>Username</th>
-		        </tr>
-		        <tr>
-		          <th scope="row">1</th>
-		          <td>Mark</td>
-		          <td>Otto</td>
-		          <td>@mdo</td>
-		        </tr>
-		        <tr>
-		          <th class="info" scope="row">2</th>
-		          <td class="warning">Jacob</td>
-		          <td class="danger">Thornton</td>
-		          <td class="success">@fat</td>
-		        </tr>
-		        <tr>
-		          <th scope="row">3</th>
-		          <td>Larry</td>
-		          <td>the Bird</td>
-		          <td>@twitter</td>
-		        </tr>
-		        <tr class="active">
-		          <th scope="row">4</th>
-		          <td>Justin</td>
-		          <td>Li</td>
-		          <td>@jizhouli</td>
-		        </tr>
-		  	</table>
-		  </div>
-		</div>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">
+		      	<!-- <img alt="栈溢出" src=""> -->
+		      	栈溢出
+		      </a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">标签 <span class="sr-only">(current)</span></a></li>
+		        <li><a href="#">语言</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">问题排行<span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">浏览数</a></li>
+		            <li><a href="#">分数</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">喜欢数</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+
+		      <form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="输入问题关键字...">
+		        </div>
+		        <button type="submit" class="btn btn-default">搜索</button>
+		      </form>
+
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">统计</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">关于<span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">网站</a></li>
+		            <li><a href="#">宗旨</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">联系我们</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
 	</div>
 
 	<div class="container">
-		<div class="row">
-		  <div class="col-md-3">
-		  	<form>
-			  <div class="form-group">
-			    <label for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputPassword1">Password</label>
-			    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputFile">File input</label>
-			    <input type="file" id="exampleInputFile">
-			    <p class="help-block">Example block-level help text here.</p>
-			  </div>
-			  <div class="checkbox">
-			    <label>
-			      <input type="checkbox"> Check me out
-			    </label>
-			  </div>
-			  <button type="submit" class="btn btn-default">Submit</button>
-			</form>
-		  </div>
-		  <div class="col-md-3">
-		  	<textarea class="form-control" rows="3"></textarea>
-		  	<p></p>
-		  	<input class="form-control" id="disabledInput" type="text" placeholder="Disabled input here..." disabled>
-		  	<p></p>
-		  	<input class="form-control" type="text" placeholder="Readonly input here…" readonly>
-		  	<p></p>
-		  	<label class="sr-only" for="inputHelpBlock">Input with help text</label>
-			<input type="text" id="inputHelpBlock" class="form-control" aria-describedby="helpBlock">
-			input with help text
-			<span id="helpBlock" class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
-		  </div>
-		  <div class="col-md-4">
-		  	<p>
-		  		<a class="btn btn-default" href="#" role="button">Link</a>
-				<button class="btn btn-default" type="submit">Button</button>
-				<input class="btn btn-default" type="button" value="Input">
-				<input class="btn btn-default" type="submit" value="Submit">
-		  	</p>
-		  	<p>
-		  		<!-- Standard button -->
-				<button type="button" class="btn btn-default">（默认样式）Default</button>
-
-				<!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-				<button type="button" class="btn btn-primary">（首选项）Primary</button>
-
-				<!-- Indicates a successful or positive action -->
-				<button type="button" class="btn btn-success">（成功）Success</button>
-
-				<!-- Contextual button for informational alert messages -->
-				<button type="button" class="btn btn-info">（一般信息）Info</button>
-
-				<!-- Indicates caution should be taken with this action -->
-				<button type="button" class="btn btn-warning">（警告）Warning</button>
-
-				<!-- Indicates a dangerous or potentially negative action -->
-				<button type="button" class="btn btn-danger">（危险）Danger</button>
-
-				<!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
-				<button type="button" class="btn btn-link">（链接）Link</button>
-		  	</p>
-		  	<p>
-		  		<button type="button" class="btn btn-primary btn-lg btn-block">（块级元素）Block level button</button>
-				<button type="button" class="btn btn-default btn-lg btn-block">（块级元素）Block level button</button>
-		  	</p>
-		  </div>
-		  <div class="col-md-2">
-		  	<p>
-		  		<img src="http://ecx.images-amazon.com/images/I/511bh%2B-VAPL._SY344_BO1,204,203,200_.jpg" alt="Responsive image" class="img-thumbnail">
-		  	</p>
-		  	<p>
-		  		<button type="button" class="btn btn-default btn-lg btn-block">IRON MUSK</button>
-		  	</p>
-		  	
-		  </div>
+	<div class="row">
+	  <div class="col-md-12">
+		<div class="page-header">
+	  	<h1>标签<small> 浏览</small></h1>
 		</div>
+	  </div>
 	</div>
+	</div>
+
+	<div class="container">
+	<div class="row">
+	  <div class="col-md-8">
+	  	<p>A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.</p>
+	  	<div class="input-group">
+	      <input type="text" class="form-control" placeholder="输入要搜索的标签名...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button">搜索</button>
+	      </span>
+	    </div><!-- /input-group -->
+	    <p></p>
+		<table class="table table-hover">
+	        <tr>
+	          <th>#</th>
+	          <th>标签名</th>
+	          <th>数目</th>
+	          <th>描述</th>
+	        </tr>
+	        <tr>
+	          <th scope="row">1</th>
+	          <td>java</td>
+	          <td>836472</td>
+	          <td>a general-purpose programming language designed to be used in conjunction with the Java Virtual Machine (JVM). "Java </td>
+	        </tr>
+	        <tr>
+	          <th class="info" scope="row">2</th>
+	          <td class="warning">javascript</td>
+	          <td class="danger">827628</td>
+	          <td class="success">JavaScript (not to be confused with Java) is a dynamic weakly typed interpreted language typically used for client-side </td>
+	        </tr>
+	        <tr>
+	          <th scope="row">3</th>
+	          <td>android</td>
+	          <td>6656617</td>
+	          <td>Google's OS for digital devices [Phone, Tablet, Auto, TV, Watch, Glass]. Please use Android-specific tags such as android</td>
+	        </tr>
+	        <tr class="active">
+	          <th scope="row">4</th>
+	          <td>c++</td>
+	          <td>361736</td>
+	          <td>a general-purpose programming language based on C. Use this tag for questions about code compiled with a C++ compiler.</td>
+	        </tr>
+	        <tr>
+	          <th scope="row">5</th>
+	          <td>java</td>
+	          <td>836472</td>
+	          <td>a general-purpose programming language designed to be used in conjunction with the Java Virtual Machine (JVM). "Java </td>
+	        </tr>
+	        <tr>
+	          <th class="info" scope="row">6</th>
+	          <td class="warning">javascript</td>
+	          <td class="danger">827628</td>
+	          <td class="success">JavaScript (not to be confused with Java) is a dynamic weakly typed interpreted language typically used for client-side </td>
+	        </tr>
+	        <tr>
+	          <th scope="row">7</th>
+	          <td>android</td>
+	          <td>6656617</td>
+	          <td>Google's OS for digital devices [Phone, Tablet, Auto, TV, Watch, Glass]. Please use Android-specific tags such as android</td>
+	        </tr>
+	        <tr class="active">
+	          <th scope="row">8</th>
+	          <td>c++</td>
+	          <td>361736</td>
+	          <td>a general-purpose programming language based on C. Use this tag for questions about code compiled with a C++ compiler.</td>
+	        </tr>
+	        <tr>
+	          <th scope="row">9</th>
+	          <td>java</td>
+	          <td>836472</td>
+	          <td>a general-purpose programming language designed to be used in conjunction with the Java Virtual Machine (JVM). "Java </td>
+	        </tr>
+	        <tr>
+	          <th class="info" scope="row">10</th>
+	          <td class="warning">javascript</td>
+	          <td class="danger">827628</td>
+	          <td class="success">JavaScript (not to be confused with Java) is a dynamic weakly typed interpreted language typically used for client-side </td>
+	        </tr>
+	        <tr>
+	          <th scope="row">11</th>
+	          <td>android</td>
+	          <td>6656617</td>
+	          <td>Google's OS for digital devices [Phone, Tablet, Auto, TV, Watch, Glass]. Please use Android-specific tags such as android</td>
+	        </tr>
+	        <tr class="active">
+	          <th scope="row">12</th>
+	          <td>c++</td>
+	          <td>361736</td>
+	          <td>a general-purpose programming language based on C. Use this tag for questions about code compiled with a C++ compiler.</td>
+	        </tr>
+	  	</table>
+	  </div>
+
+	  <div class="col-md-4">
+		<p>
+	  		<img src="http://img3.douban.com/view/photo/photo/public/p2236435124.jpg" alt="Responsive image" class="img-thumbnail">
+	  		<img src="http://img3.douban.com/view/dale-online/dale_ad/public/2d1ba7a488a97ee.jpg" alt="Responsive image" class="img-thumbnail">
+	  		<img src="http://img3.douban.com/view/dale-online/dale_ad/public/2309939746ffa79.jpg" alt="Responsive image" class="img-thumbnail">
+	  		<img src="http://img3.douban.com/view/dale-online/dale_ad/public/015d3451d51d00b.jpg" alt="Responsive image" class="img-thumbnail">
+	  	</p>
+	  	</p>
+	  </div>
+	</div>
+	</div>
+
+	<div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+		<div class="text-center">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+	</div>
+
+	 <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright © ZhanYiChu 2015</p>
+      </div>
+    </footer>
 </body>
 </html>
