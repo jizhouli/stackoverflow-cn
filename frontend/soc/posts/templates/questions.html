@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# 设置SEO description #}
+{% block meta_description %}"problem solution"{% endblock %}
+
+{# 设置SEO keywords #}
+{% block meta_keywords %}"question,answer"{% endblock %}
+
+{# 设置网页标题 #}
+{% block title%}问题页{% endblock %}
+
+{# 设置顶部导航栏激活标签 #}
+{% block nav_question_li %}class="active"{% endblock %}
+
+{% block main_content %}
+    <h3 class="page-header">Django模版中如何添加注释<small></small></h3>
+    <img src="{% static "image/ad_left_top.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
+    <h4>how to put comments in django templates</h4>
+    <p>页面主体</p>
+    <hr>
+    <h4>答案</h4>
+    <p>页面主体</p>
+{% endblock %}
+

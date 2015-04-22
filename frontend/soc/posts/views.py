@@ -28,3 +28,6 @@ def search(request):
             return render_to_response('search.html',
                     {'posts': posts, 'query': q})
     return render_to_response('search_form.html', {'errors': errors})
+
+def questions(request):
+    return render_to_response('questions.html', {})
