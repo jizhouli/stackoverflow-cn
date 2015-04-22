@@ -9,7 +9,7 @@ urlpatterns = [
     # url(r'^$', 'soc.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', posts.views.home),
+    url(r'^$', posts.views.index), #home),
     url(r'^index/', posts.views.index),
     url(r'^bootstrap/', posts.views.bootstrap),
     url(r'^search/', posts.views.search),
