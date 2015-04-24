@@ -33,7 +33,7 @@ class Posts(Store):
                     Id,
                     PostTypeId,
                     AcceptedAnswerId,
-                    ParentID,
+                    ParentId,
                     Score,
                     ViewCount,
                     Body,

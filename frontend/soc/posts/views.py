@@ -17,20 +17,21 @@ def index(request):
 
 def search(request):
     errors = []
-    if 'q' in request.GET:
-        q = request.GET['q']
-        if not q:
-            errors.append('Enter a search term')
-        elif len(q) > 20:
-            errors.append('Please enter at most 20 characters')
-        else:
-            posts = Posts.objects.filter(title__icontains=q)[:10]
-            return render_to_response('search.html',
-                    {'posts': posts, 'query': q})
+    size = request.GET.get('size', 100)
+    query = request.GET.get('query', '')
+    if not query:
+        errors.append('please enter query word, e.g. "?query=python"')
+    else:
+        posts = Posts.objects.filter(title__icontains=query)[:size]
+        return render_to_response('search.html', {'posts': posts, 'query': query})
     return render_to_response('search_form.html', {'errors': errors})
 
 def tagged(request, param):
-    return HttpResponse('hello %s' % (param))
+    try:
+        posts = Posts.objects.filter(tags__icontains=param)[:100]
+        return render_to_response('search.html', {'posts': posts, 'query': param})
+    except Posts.DoesNotExist:
+        return render_to_response('404.html', {})
 
 def questions(request, param):
     try:
@@ -46,6 +47,13 @@ def questions(request, param):
     answer = {}
     if aa_id:
         answer = Posts.objects.get(id=aa_id)
+        answerer = Users.objects.get(id=answer.owneruserid)
+
     return render_to_response('questions.html',
-            {'question': question, 'answer': answer, 'author': author})
+            {
+                'question': question, 
+                'answer': answer, 
+                'author': author,
+                'answerer': answerer,
+            })
 

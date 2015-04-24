@@ -35,9 +35,9 @@ class AcceptedAnswerId(ColumnInt):
         s = '''only present if PostTypeId is 1'''
         return s
 
-class ParentID(ColumnInt):
+class ParentId(ColumnInt):
     def __init__(self, value):
-        super(ParentID, self).__init__(value)
+        super(ParentId, self).__init__(value)
 
     def comment(self):
         s = '''only present if PostTypeId is 2'''
