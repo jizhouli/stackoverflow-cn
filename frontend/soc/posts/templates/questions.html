@@ -18,10 +18,29 @@
 {% block side_author_aboutme %}{{ author.aboutme | safe }}{% endblock %}
 
 {% block main_content %}
+    <!-- 页面标题 -->
     <h3 class="page-header">{{ question.title }}<small></small></h3>
     <img src="{% static "images/ad_left_top.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
+    
+    <!-- 问题标题 -->
     <h4 class="page-header">{{ question.title }}</h4>
-    {{ question.body | safe }}
+
+    <!--nesting no need <div class="container"> -->
+    <div class="row">
+        <div class="col-md-1">
+            <!-- Include upvote widget, 3.add widget-->
+            <div class="upvote">
+                <a class="upvote upvote-on upvote-enabled" title="赞成"></a>
+                <span class="count" title="Total number of votes">10</span>
+                <a class="downvote upvote-enabled" title="反对"></a>
+                <a class="star star-on upvote-enabled" title="收藏"></a>
+            </div>
+        </div>
+        <div class="col-md-11">
+            <!-- 问题答案 -->
+            {{ question.body | safe }}
+        </div>
+    </div>
 
     <div>
     <p><small>标签</small></p>
@@ -29,6 +48,8 @@
     <a class="btn btn-primary btn-sm" href="/questions/tagged/{{ tag }}" role="button">{{ tag }}</a>
     {% endfor %}
     </div>
+
+    <!-- 作者信息 -->
     <!--nesting no need <div class="container"> -->
     <div class="row">
         <div class="col-md-9">
