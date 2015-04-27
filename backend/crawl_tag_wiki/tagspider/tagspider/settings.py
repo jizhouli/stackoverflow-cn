@@ -21,4 +21,7 @@ NEWSPIDER_MODULE = 'tagspider.spiders'
 USER_AGENT = '%s/%s' % (BOT_NAME, BOT_VERSION)
 
 ITEM_PIPELINES = [
+        'tagspider.pipelines.MD5SumPipeline',
+        'tagspider.pipelines.ValidatePipeline',
+        'tagspider.pipelines.StoreToDBPipeline',
         ]

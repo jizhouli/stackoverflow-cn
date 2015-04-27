@@ -87,10 +87,17 @@ class TagSpider(CrawlSpider):
     def parse_wiki_page(self, response):
         log.msg('parse wiki page: %s' % str(response))
 
-        item = TagspiderItem()
-        item['name'] = ''
-        item['excerpt'] = ''
-        item['sum'] = ''
+        selector = Selector(response=response)
+        excerpt = selector.xpath("//div[@id='wiki-excerpt']/p/text()").extract()[0]
+        wiki = selector.xpath("//div[@class='post-text']").extract()[0]
+        #log.msg(excerpt)
+        #log.msg(wiki)
 
-        return []
+        item = TagspiderItem()
+        item['name'] = response.request.meta['name']
+        item['sum'] = response.request.meta['sum']
+        item['excerpt'] = excerpt
+        item['wiki'] = wiki
+
+        return item
 
