@@ -19,7 +19,7 @@
 
 {% block main_content %}
     <h3 class="page-header">{{ question.title }}<small></small></h3>
-    <img src="{% static "image/ad_left_top.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
+    <img src="{% static "images/ad_left_top.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
     <h4 class="page-header">{{ question.title }}</h4>
     {{ question.body | safe }}
 
@@ -38,7 +38,7 @@
             <div class="row" style="background-color:rgb(217,228,238);" title="{{ author.aboutme }}">
                 <div class="row"><p/></div>
                 <div class="col-md-3">
-                    <img src="{% static "image/avatar1.png" %}" title="" alt="avatar1">
+                    <img src="{% static "images/avatar1.png" %}" title="" alt="avatar1">
                 </div>
                 <div class="col-md-9">
                     <a href="{{ author.websiteurl }}"><font color="gray">{{ author.displayname }}</font></a>
@@ -66,7 +66,7 @@
             <div class="row" style="background-color:rgb(217,228,238);" title="{{ answerer.aboutme }}">
                 <div class="row"><p/></div>
                 <div class="col-md-3">
-                    <img src="{% static "image/avatar1.png" %}" title="" alt="avatar1">
+                    <img src="{% static "images/avatar1.png" %}" title="" alt="avatar1">
                 </div>
                 <div class="col-md-9">
                     <a href="{{ answerer.websiteurl }}"><font color="gray">{{ answerer.displayname }}</font></a>
@@ -78,7 +78,7 @@
     <!--</div>-->
 
     <br>
-    <img src="{% static "image/ad_left_middle.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
+    <img src="{% static "images/ad_left_middle.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
 
     {% comment %}
     <h4 class="page-header">所有回答</h4>
