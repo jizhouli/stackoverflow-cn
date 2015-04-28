@@ -11,8 +11,6 @@
 BOT_NAME = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.7; rv:16.0) Gecko/20100101 Firefox'
 BOT_VERSION = '1.0'
 
-CONCURRENT_REQUESTS = 2
-
 SPIDER_MODULES = ['tagspider.spiders']
 NEWSPIDER_MODULE = 'tagspider.spiders'
 
@@ -26,3 +24,8 @@ ITEM_PIPELINES = [
         'tagspider.pipelines.SQLStatementEscape',
         'tagspider.pipelines.StoreToDBPipeline',
         ]
+
+# set concurrent
+CONCURRENT_REQUESTS = 1
+# set delay
+DOWNLOAD_DELAY = 10
