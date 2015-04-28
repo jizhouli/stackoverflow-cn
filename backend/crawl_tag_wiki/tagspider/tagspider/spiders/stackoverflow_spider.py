@@ -52,7 +52,7 @@ class TagSpider(CrawlSpider):
         log.msg("get total page num: %s" % last_pager)
 
         #TODO
-        last_pager = 5
+        last_pager = 100
 
         detail_page_url = response.request.meta['detail_page_url']
         for pager in range(1, last_pager+1):

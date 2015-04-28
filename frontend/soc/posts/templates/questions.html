@@ -28,12 +28,13 @@
     <!--nesting no need <div class="container"> -->
     <div class="row">
         <div class="col-md-1">
+            <!-- 赞成/反对 -->
             <!-- Include upvote widget, 3.add widget-->
             <div class="upvote">
-                <a class="upvote upvote-on upvote-enabled" title="赞成"></a>
-                <span class="count" title="Total number of votes">10</span>
+                <a class="upvote upvote-off upvote-enabled" title="赞成"></a>
+                <span class="count" title="投票数">{{ question.score }}</span>
                 <a class="downvote upvote-enabled" title="反对"></a>
-                <a class="star star-on upvote-enabled" title="收藏"></a>
+                <a class="star star-off upvote-enabled" title="收藏"></a>
             </div>
         </div>
         <div class="col-md-11">
