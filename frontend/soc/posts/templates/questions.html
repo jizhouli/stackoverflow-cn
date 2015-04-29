@@ -20,7 +20,8 @@
 {% block main_content %}
     <!-- 页面标题 -->
     <h3 class="page-header">{{ question.title }}<small></small></h3>
-    <img src="{% static "images/ad_left_top.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
+    <!-- 添加AD控件 -->
+    {% include "ctl_ad_lefttop.html" %}
     
     <!-- 问题标题 -->
     <h4 class="page-header">{{ question.title }}</h4>
@@ -100,7 +101,6 @@
     <!--</div>-->
 
     <br>
-    <img src="{% static "images/ad_left_middle.jpg" %}" title="" alt="ad_left_top" class="img-thumbnail">
 
     {% comment %}
     <h4 class="page-header">所有回答</h4>

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# 设置SEO description #}
+{% block meta_description %}"problem solution"{% endblock %}
+
+{# 设置SEO keywords #}
+{% block meta_keywords %}"question,answer"{% endblock %}
+
+{# 设置网页标题 #}
+{% block title %}{{ "热门问题分类" }}{% endblock %}
+
+{# 设置顶部导航栏激活标签 #}
+{% block nav_tag_li %}class="active"{% endblock %}
+
+
+{% block side_author_name %}{{ author.displayname }}{% endblock %}
+
+{% block main_content %}
+<!-- 页面标题 -->
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="page-header">热门问题分类<small> - 排名</small></h3>
+        <!-- 添加AD控件 -->
+        {% include "ctl_ad_lefttop.html" %}
+    </div>
+</div>
+
+<!-- 页面内容（搜索框） -->
+<div class="row">
+    <div class="col-md-12">
+        <br></br>
+        <form method="GET">
+            <div class="input-group">
+                <input type="text" class="form-control" name="search" placeholder="输入要搜索的问题、标签或者关键词，例如：ajax">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit">点击搜索相关问题</button>
+                </span>
+            </div><!-- /input-group -->
+        </form>
+    </div>
+</div>
+
+<!-- 页面内容（标签列表） -->
+<div class="row">
+    <div class="col-md-12">
+        <p></p>
+        <table class="table table-striped table-hover">
+            <tr class="info">
+                <th>#</th>
+                <th>标签</th>
+                <th>讨论数</th>
+                <th>描述</th>
+            </tr>
+            {% for tag in tag_list %}
+            <tr>
+                <td scope="row" class="col-md-1">{{ iterator.next | add:1 }}</td>
+                <th class="col-md-1"><a href="/questions/tagged/{{ tag.name }}">{{ tag.name }}</a></th>
+                <td class="col-md-1">{{ tag.sum }}</td>
+                <td class="col-md-9">{{ tag.excerpt }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <!-- space line -->
+        <br>
+
+    </div>
+</div>
+{% endblock %}
+
+<!-- 分页 -->
+{% block pager %}
+<nav>
+    <ul class="pager">
+        {% if pagination.page_down.enable %}
+            <li class="previous">
+        {% else %}
+            <li class="previous disabled">
+        {% endif %}
+        <a href="?page={{ pagination.page_down.value }}">上一页</a>
+        </li>
+
+        {% if pagination.page_up.enable %}
+            <li class="next">
+        {% else %}
+            <li class="next disabled">
+        {% endif %}
+        <a href="?page={{ pagination.page_up.value }}">下一页</a>
+        </li>
+    </ul>
+</nav>
+{% endblock %}

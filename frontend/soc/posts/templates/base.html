@@ -49,9 +49,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <!-- 左侧导航 -->
 		      <ul class="nav navbar-nav">
-                <li {% block nav_tag_li %}{% endblock %}><a href="#">标签</a></li>
-                <li {% block nav_question_li %}{% endblock %}><a href="#">答案</a></li>
-		        <li class="dropdown">
+                <li {% block nav_tag_li %}{% endblock %}><a href="/questions/tagged/">标签</a></li>
+                <li {% block nav_wiki_li %}{% endblock %}><a href="/wiki/">Wiki</a></li>
+                <li {% block nav_question_li %}{% endblock %}><a href="/questions/">Q&A</a></li>
+		        <li class="dropdown" style="display:none">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">浏览<span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
 		            <li><a href="#">浏览数</a></li>
@@ -93,29 +94,26 @@
     <!-- Page Content -->
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <!-- 主题部分 -->
+            <div class="col-md-9">
+                <!-- main content -->
+                {% block main_content %}
+                <h3 class="page-header">标题<small>描述</small></h3>
+                <p>页面主体</p>
+                {% endblock %}
 
-            <!-- main content -->
-            {% block main_content %}
-            <h3 class="page-header">标题<small>描述</small></h3>
-            <p>页面主体</p>
-            {% endblock %}
+                <!-- 添加AD控件 -->
+                {% include "ctl_ad_leftbottom.html" %}
 
-            <!-- Pager -->
-            <ul class="pager">
-                <li class="previous">
-                    <a href="#">← Older</a>
-                    </li>
-                    <li class="next">
-                        <a href="#">Newer →</a>
-                    </li>
-                </ul>
+                <!-- Pager -->
+                {% block pager %}
+                {% endblock %}
             </div>
 
-            <!-- Sidebar Widgets Column -->
-            <div class="col-md-4">
+            <!-- 右侧控件 -->
+            <div class="col-md-3">
                 <!-- Blog Search Well -->
-                <div class="well">
+                <div class="well" style="display:none">
                     <h4>问题没解决? 修改关键词再试试</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
@@ -165,7 +163,8 @@
                     <p>作者描述</p>
                     {% endblock %}
                 </div>
-                <img src="{% static "images/ad_right1.png" %}" title="" alt="ad_right1" class="img-thumbnail">
+                <!-- 添加AD控件 -->
+                {% include "ctl_ad_rightbottom.html" %}
             </div>
         </div>
         <!-- /.row -->

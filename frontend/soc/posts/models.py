@@ -7,6 +7,9 @@
 #
 # Also note: You'll have to insert the output of 'django-admin sqlcustom [app_label]'
 # into your database.
+
+# cmd: python manage.py inspectdb
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -184,3 +187,19 @@ class Votes(models.Model):
         managed = False
         db_table = 'votes'
         app_label = 'posts'
+
+class MetaTag(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)
+    sum = models.IntegerField(db_column='Sum', blank=True, null=True)
+    name = models.CharField(db_column='Name', max_length=256)
+    excerpt = models.CharField(db_column='Excerpt', max_length=512)
+    wiki = models.TextField(db_column='Wiki', blank=True, null=True)
+    md5 = models.CharField(db_column='MD5', max_length=32)
+
+    class Meta:
+        managed = False
+        db_table = 'meta_tag'
+        app_label = 'posts'
+
+
+

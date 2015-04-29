@@ -25,7 +25,11 @@ SECRET_KEY = 'ivmsx@kifrsj_hqn+yrsjhh)!qt*p3%)8d9b@dw68a)%p2$&qh'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+        '.zhanyichu.com',
+        'localhost',
+        '127.0.0.1',
+        ]
 
 TEMPLATE_DIRS = (
         os.path.join(BASE_DIR, 'posts/templates').replace('\\', '/'),
