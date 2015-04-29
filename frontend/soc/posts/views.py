@@ -20,7 +20,10 @@ import itertools
 def bootstrap(request):
     return render_to_response('bootstrap.html', {})
 
-def search(request):
+def bootstrap2(request):
+    return render_to_response('bootstrap2.html', {})
+
+def rawsearch(request):
     errors = []
     size = request.GET.get('size', 100)
     query = request.GET.get('query', '')
@@ -28,8 +31,8 @@ def search(request):
         errors.append('please enter query word, e.g. "?query=python"')
     else:
         posts = Posts.objects.filter(title__icontains=query)[:size]
-        return render_to_response('search.html', {'posts': posts, 'query': query})
-    return render_to_response('search_form.html', {'errors': errors})
+        return render_to_response('raw_search.html', {'posts': posts, 'query': query})
+    return render_to_response('raw_search_form.html', {'errors': errors})
 
 ### exceptional status code 
 

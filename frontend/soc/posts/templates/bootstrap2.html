@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<!-- 新 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- 可选的Bootstrap主题文件（一般不用引入） -->
+	<link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+	<script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="http://cdn.bootcss.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class="bs-docs-home">
+	<!-- 添加顶部导航条 -->
+	<div class="container">
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      <a class="navbar-brand" href="#">
+		      	<!-- <img alt="栈溢出" src=""> -->
+		      	栈溢出
+		      </a>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		      <ul class="nav navbar-nav">
+		        <li class="active"><a href="#">标签 <span class="sr-only">(current)</span></a></li>
+		        <li><a href="#">语言</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">问题排行<span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">浏览数</a></li>
+		            <li><a href="#">分数</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">喜欢数</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+
+		      <form class="navbar-form navbar-left" role="search">
+		        <div class="form-group">
+		          <input type="text" class="form-control" placeholder="输入问题关键字...">
+		        </div>
+		        <button type="submit" class="btn btn-default">搜索</button>
+		      </form>
+
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">统计</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">关于<span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#">网站</a></li>
+		            <li><a href="#">宗旨</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">联系我们</a></li>
+		          </ul>
+		        </li>
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+	</div>
+
+	<div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+		<div class="page-header">
+	  	<h1>标签<small> 浏览</small></h1>
+		</div>
+	  </div>
+	</div>
+	</div>
+
+	<div class="container">
+	<div class="row">
+	  <div class="col-md-8">
+	  	<p>A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.</p>
+	  	<div class="input-group">
+	      <input type="text" class="form-control" placeholder="输入要搜索的标签名...">
+	      <span class="input-group-btn">
+	        <button class="btn btn-default" type="button">搜索</button>
+	      </span>
+	    </div><!-- /input-group -->
+	    <p></p>
+		<table class="table table-hover">
+	        <tr>
+	          <th>#</th>
+	          <th>标签名</th>
+	          <th>数目</th>
+	          <th>描述</th>
+	        </tr>
+	        <tr>
+	          <th scope="row">1</th>
+	          <td>java</td>
+	          <td>836472</td>
+	          <td>a general-purpose programming language designed to be used in conjunction with the Java Virtual Machine (JVM). "Java </td>
+	        </tr>
+	        <tr>
+	          <th class="info" scope="row">2</th>
+	          <td class="warning">javascript</td>
+	          <td class="danger">827628</td>
+	          <td class="success">JavaScript (not to be confused with Java) is a dynamic weakly typed interpreted language typically used for client-side </td>
+	        </tr>
+	        <tr>
+	          <th scope="row">3</th>
+	          <td>android</td>
+	          <td>6656617</td>
+	          <td>Google's OS for digital devices [Phone, Tablet, Auto, TV, Watch, Glass]. Please use Android-specific tags such as android</td>
+	        </tr>
+	        <tr class="active">
+	          <th scope="row">4</th>
+	          <td>c++</td>
+	          <td>361736</td>
+	          <td>a general-purpose programming language based on C. Use this tag for questions about code compiled with a C++ compiler.</td>
+	        </tr>
+	        <tr>
+	          <th scope="row">5</th>
+	          <td>java</td>
+	          <td>836472</td>
+	          <td>a general-purpose programming language designed to be used in conjunction with the Java Virtual Machine (JVM). "Java </td>
+	        </tr>
+	        <tr>
+	          <th class="info" scope="row">6</th>
+	          <td class="warning">javascript</td>
+	          <td class="danger">827628</td>
+	          <td class="success">JavaScript (not to be confused with Java) is a dynamic weakly typed interpreted language typically used for client-side </td>
+	        </tr>
+	        <tr>
+	          <th scope="row">7</th>
+	          <td>android</td>
+	          <td>6656617</td>
+	          <td>Google's OS for digital devices [Phone, Tablet, Auto, TV, Watch, Glass]. Please use Android-specific tags such as android</td>
+	        </tr>
+	        <tr class="active">
+	          <th scope="row">8</th>
+	          <td>c++</td>
+	          <td>361736</td>
+	          <td>a general-purpose programming language based on C. Use this tag for questions about code compiled with a C++ compiler.</td>
+	        </tr>
+	        <tr>
+	          <th scope="row">9</th>
+	          <td>java</td>
+	          <td>836472</td>
+	          <td>a general-purpose programming language designed to be used in conjunction with the Java Virtual Machine (JVM). "Java </td>
+	        </tr>
+	        <tr>
+	          <th class="info" scope="row">10</th>
+	          <td class="warning">javascript</td>
+	          <td class="danger">827628</td>
+	          <td class="success">JavaScript (not to be confused with Java) is a dynamic weakly typed interpreted language typically used for client-side </td>
+	        </tr>
+	        <tr>
+	          <th scope="row">11</th>
+	          <td>android</td>
+	          <td>6656617</td>
+	          <td>Google's OS for digital devices [Phone, Tablet, Auto, TV, Watch, Glass]. Please use Android-specific tags such as android</td>
+	        </tr>
+	        <tr class="active">
+	          <th scope="row">12</th>
+	          <td>c++</td>
+	          <td>361736</td>
+	          <td>a general-purpose programming language based on C. Use this tag for questions about code compiled with a C++ compiler.</td>
+	        </tr>
+	  	</table>
+	  </div>
+
+	  <div class="col-md-4">
+		<p>
+	  		<img src="http://cdn.pingwest.com/wp-content/uploads/2015/04/beastgrip22.png" alt="Responsive image" class="img-thumbnail">
+	  		<img src="http://a.36krcnd.com/nil_class/2ec11609-4a0b-4e48-a1c4-8f8867b9662f/_____2015-04-20___11.58.12.png" alt="Responsive image" class="img-thumbnail">
+	  		<img src="http://a.36krcnd.com/nil_class/4aa9fbd5-603d-4353-aaaf-f5ce4533f9c6.jpg" alt="Responsive image" class="img-thumbnail">
+	  	</p>
+	  	</p>
+	  </div>
+	</div>
+	</div>
+
+	<div class="container">
+	<div class="row">
+	  <div class="col-md-12">
+		<div class="text-center">
+		  <ul class="pagination">
+		    <li>
+		      <a href="#" aria-label="Previous">
+		        <span aria-hidden="true">&laquo;</span>
+		      </a>
+		    </li>
+		    <li><a href="#">1</a></li>
+		    <li><a href="#">2</a></li>
+		    <li><a href="#">3</a></li>
+		    <li><a href="#">4</a></li>
+		    <li><a href="#">5</a></li>
+		    <li>
+		      <a href="#" aria-label="Next">
+		        <span aria-hidden="true">&raquo;</span>
+		      </a>
+		    </li>
+		  </ul>
+		</div>
+	  </div>
+	</div>
+	</div>
+
+	 <footer class="footer">
+      <div class="container">
+        <p class="text-muted">Copyright © ZhanYiChu 2015</p>
+      </div>
+    </footer>
+</body>
+</html>

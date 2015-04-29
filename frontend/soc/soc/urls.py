@@ -11,7 +11,8 @@ urlpatterns = [
 
     ### developing interface ###
     url(r'^bootstrap/', posts.views.bootstrap),
-    url(r'^search/', posts.views.search),
+    url(r'^bootstrap2/', posts.views.bootstrap2),
+    url(r'^rawsearch/', posts.views.rawsearch),
     url(r'^admin/', include(admin.site.urls)),
 
 
