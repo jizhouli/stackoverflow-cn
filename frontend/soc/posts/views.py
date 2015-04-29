@@ -56,7 +56,7 @@ def index(request):
 ### tag wiki
 
 def wiki(request, param='index'):
-    return HttpResponse('hello home!')
+    return HttpResponse('wiki page placeholder!')
 
 ### tag questions
 
@@ -141,6 +141,9 @@ def tagged(request, param = "index"):
 ### Q&A
 
 def questions(request, param='index'):
+    if param == 'index':
+        return HttpResponse('question index page placeholder!')
+
     try:
         question = Posts.objects.get(id=param)
     except Posts.DoesNotExist:
