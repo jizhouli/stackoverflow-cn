@@ -137,7 +137,7 @@ def tagged(request, param = "index"):
     # show tag search result page
     try:
         posts = Posts.objects.filter(tags__icontains=param)[:100]
-        return render_to_response('search.html', {'posts': posts, 'query': param})
+        return render_to_response('raw_search.html', {'posts': posts, 'query': param})
     except Posts.DoesNotExist:
         return render_to_response('404.html', {})
 
