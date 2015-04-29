@@ -22,7 +22,7 @@
     <div class="col-md-12">
         <h3 class="page-header">热门问题分类<small> - 排名</small></h3>
         <!-- 添加AD控件 -->
-        {% include "ctl_ad_lefttop.html" %}
+        {% include "ctl_sub_ad_lefttop.html" %}
     </div>
 </div>
 
@@ -61,10 +61,6 @@
             </tr>
             {% endfor %}
         </table>
-
-        <!-- space line -->
-        <br>
-
     </div>
 </div>
 {% endblock %}
@@ -72,21 +68,23 @@
 <!-- 分页 -->
 {% block pager %}
 <nav>
-    <ul class="pager">
+    <ul class="pager pagination-lg">
         {% if pagination.page_down.enable %}
             <li class="previous">
+            <a href="?page={{ pagination.page_down.value }}">上一页</a>
         {% else %}
             <li class="previous disabled">
+            <a>上一页</a>
         {% endif %}
-        <a href="?page={{ pagination.page_down.value }}">上一页</a>
         </li>
 
         {% if pagination.page_up.enable %}
             <li class="next">
+            <a href="?page={{ pagination.page_up.value }}">下一页</a>
         {% else %}
             <li class="next disabled">
+            <a>下一页</a>
         {% endif %}
-        <a href="?page={{ pagination.page_up.value }}">下一页</a>
         </li>
     </ul>
 </nav>
