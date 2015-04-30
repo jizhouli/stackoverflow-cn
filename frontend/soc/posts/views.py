@@ -100,7 +100,7 @@ def wiki(request, param='index'):
         iterator=itertools.count()
 
         # show tag list page
-        return render_to_response('wiki.html', 
+        return render_to_response('wiki_index.html', 
                 {
                     'cols_matrix': cols_matrix, 
                     'cols_width': cols_width,
