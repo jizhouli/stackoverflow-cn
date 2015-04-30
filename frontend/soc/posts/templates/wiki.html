@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# 设置SEO description #}
+{% block meta_description %}{{ tag.name }}{% endblock %}
+
+{# 设置SEO keywords #}
+{% block meta_keywords %}{{ tag.name }}{% endblock %}
+
+{# 设置网页标题 #}
+{% block title %}{{ tag.name }}{% endblock %}
+
+{# 设置顶部导航栏激活标签 #}
+{% block nav_wiki_li %}class="active"{% endblock %}
+
+{% block main_content %}
+<!-- 页面标题 -->
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="page-header">{{ tag.name }} 详解<small></small></h3>
+        <div class="well">
+            {{ tag.excerpt | safe }}
+        </div>
+        <!-- 添加AD控件 -->
+        {% include "ctl_sub_ad_lefttop.html" %}
+    </div>
+</div>
+
+<!-- 页面内容 -->
+<div class="row">
+    <br></br>
+    {{ tag.wiki | safe }}
+</div>
+{% endblock %}
+

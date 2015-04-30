@@ -110,11 +110,17 @@ def wiki(request, param='index'):
 
     # show tag search result page
     try:
-        posts = Posts.objects.filter(tags__icontains=param)[:100]
-        return render_to_response('raw_search.html', {'posts': posts, 'query': param})
-    except Posts.DoesNotExist:
+        tag = MetaTag.objects.get(name=param)
+        return render_to_response('wiki.html', {'tag': tag})
+    except MetaTag.DoesNotExist:
+        # /wiki/404/ -> ['', 'wiki', '404', '']
+        # /wiki/aaa/bbb -> /wiki/aaa -> /wiki
+        path_split = request.path_info.split('/')
+        print path_split
+        wiki_index_path = '/'.join(path_split[:len(path_split)-2])
+        return HttpResponseRedirect(wiki_index_path)
+    except Exception, e:
         return render_to_response('404.html', {})
-
 
 ### tag questions
 
