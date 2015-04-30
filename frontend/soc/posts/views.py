@@ -59,7 +59,62 @@ def index(request):
 ### tag wiki
 
 def wiki(request, param='index'):
-    return HttpResponse('wiki page placeholder!')
+    if param == "index":
+        # REDIRECT search request to restful url
+        # "/wiki/?search=java" to "/wiki/java/"
+        submit_keyword = request.GET.get('search', '')
+        if submit_keyword:
+            return HttpResponseRedirect("%s%s" % (request.path_info, submit_keyword))
+
+        page = request.GET.get('page', '1')
+        page = _validate_page(page)
+        page_size = request.GET.get('page_size', '48')
+        page_size = _validate_page(page_size)
+
+        # get pagination
+        tag_max = MetaTag.objects.count()
+        page_max = _divide_ceiling(tag_max, page_size)
+        pagination = _pagination(page_max, page, page_size)
+
+        # REDIRCT exceeding page number to last page
+        if page > page_max:
+            return HttpResponseRedirect("%s?page=%s" % (request.path_info, page_max))
+
+        offset_begin = (page-1)*page_size
+        offset_end = offset_begin + page_size
+        
+        # get tag list
+        tag_list = MetaTag.objects.all().order_by('-sum')[offset_begin:offset_end]
+        cols_width = 4 # must be devided exactily by 12 according to bootstrap Grid System
+        cols = []
+        cols_matrix = []
+        for idx,col in enumerate(tag_list):
+            if idx % cols_width == 0:
+                if len(cols) > 0: cols_matrix.append(cols)
+                cols = []
+            cols.append(col)
+        if len(cols) > 0:
+            cols_matrix.append(cols)
+
+        # get iterator
+        iterator=itertools.count()
+
+        # show tag list page
+        return render_to_response('wiki.html', 
+                {
+                    'cols_matrix': cols_matrix, 
+                    'cols_width': cols_width,
+                    'iterator': iterator,
+                    'pagination': pagination,
+                })
+
+    # show tag search result page
+    try:
+        posts = Posts.objects.filter(tags__icontains=param)[:100]
+        return render_to_response('raw_search.html', {'posts': posts, 'query': param})
+    except Posts.DoesNotExist:
+        return render_to_response('404.html', {})
+
 
 ### tag questions
 
@@ -127,7 +182,7 @@ def tagged(request, param = "index"):
         iterator=itertools.count()
 
         # show tag list page
-        return render_to_response('tag_list.html', 
+        return render_to_response('questions_tagged.html', 
                 {
                     'tag_list': tag_list, 
                     'iterator': iterator,
