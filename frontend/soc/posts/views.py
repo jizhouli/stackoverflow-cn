@@ -64,7 +64,7 @@ def wiki(request, param='index'):
         # "/wiki/?search=java" to "/wiki/java/"
         submit_keyword = request.GET.get('search', '')
         if submit_keyword:
-            return HttpResponseRedirect("%s%s" % (request.path_info, submit_keyword))
+            return HttpResponseRedirect("%s%s/" % (request.path_info, submit_keyword))
 
         page = request.GET.get('page', '1')
         page = _validate_page(page)
@@ -162,7 +162,7 @@ def tagged(request, param = "index"):
         # "/questions/tagged/?search=java" to "/questions/tagged/java/"
         submit_keyword = request.GET.get('search', '')
         if submit_keyword:
-            return HttpResponseRedirect("%s%s" % (request.path_info, submit_keyword))
+            return HttpResponseRedirect("%s%s/" % (request.path_info, submit_keyword))
 
         page = request.GET.get('page', '1')
         page = _validate_page(page)
@@ -188,7 +188,7 @@ def tagged(request, param = "index"):
         iterator=itertools.count()
 
         # show tag list page
-        return render_to_response('questions_tagged.html', 
+        return render_to_response('questions_tagged_index.html', 
                 {
                     'tag_list': tag_list, 
                     'iterator': iterator,
@@ -197,6 +197,7 @@ def tagged(request, param = "index"):
 
     # show tag search result page
     try:
+        #TODO get questions belong to a tag, then list them
         posts = Posts.objects.filter(tags__icontains=param)[:100]
         return render_to_response('raw_search.html', {'posts': posts, 'query': param})
     except Posts.DoesNotExist:
