@@ -33,7 +33,15 @@
     <!-- Include upvote widget, 1.css (all file store in /static/lib direcotry)-->
     <link href="{% static "lib/jquery.upvote.css" %}" rel="stylesheet">
 
-    <script type="text/javascript">
+    <!-- 百度网站统计脚本 -->
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?b3d5085be3bd02d9208528f15ea7d307";
+          var s = document.getElementsByTagName("script")[0]; 
+          s.parentNode.insertBefore(hm, s);
+        })();
     </script>
 
   </head>
