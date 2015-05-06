@@ -218,7 +218,7 @@ def tagged(request, param = "index"):
     page_size = _validate_page(page_size)
 
     post_max = Posts.objects.filter(tags__icontains=param).count()
-    # fix bug: 此网页包含重定向循环（ERR_TOO_MANY_REDIRECTS）
+    # fix bug: ERR_TOO_MANY_REDIRECTS
     if post_max < 1:
         return render_to_response('404.html', {'request':request})
 
