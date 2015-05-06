@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# 设置SEO description #}
+{% block meta_description %}{{ query }}{% endblock %}
+
+{# 设置SEO keywords #}
+{% block meta_keywords %}{{ query }}{% endblock %}
+
+{# 设置网页标题 #}
+{% block title %}{{ query }}问题列表{% endblock %}
+
+{# 设置顶部导航栏激活标签 #}
+{% block nav_tag_li %}class="active"{% endblock %}
+
+{% block main_content %}
+<!-- 页面标题 -->
+<div class="row">
+    <div class="col-md-12">
+        <h3 class="page-header">{{ query }} 问题列表<small></small></h3>
+        <!--
+        <div class="well">
+            {{ query }}
+        </div>
+        -->
+        <!-- 添加AD控件 -->
+        {% include "ctl_sub_ad_lefttop.html" %}
+    </div>
+</div>
+
+<!-- 页面内容 -->
+<div class="row">
+<div class="col-md-12">
+<div id="questions" class="content-padding">
+{% for post in posts %}
+    <div class="question-summary">
+        <div class="statscontainer">
+            <div class="statsarrow"></div>
+            <div class="stats">
+                <div class="vote">
+                    <div class="votes">
+                        <span class="vote-count-post ">
+                            <strong>{{ post.score }}</strong>
+                        </span>
+                        <div class="viewcount">votes</div>
+                    </div>
+                </div>
+                <div class="status answered">
+                    <strong>{{ post.answercount }}</strong>
+                    <div>answers</div>
+                </div>
+            </div>
+            <div class="views " title="views">
+                {{ post.viewcount }} views
+            </div>
+        </div>
+        <div class="summary">
+            <h3>
+                <a href="/questions/{{ post.id }}/" class="question-hyperlink">
+                    {{ post.title }}
+                </a>
+            </h3>
+            <div class="excerpt">
+                {{ post.body | escape | truncatechars:250 }}
+            </div>          
+            <div class="tags">
+                {% for tag in post.tags  %}
+                <a href="/questions/tagged/{{ tag }}/" class="post-tag" title="show questions tagged '{{ tag }}'" rel="tag">
+                    {{ tag }}
+                </a> 
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div><!-- end div id="questions" -->
+</div><!-- end div class="col-md-12"  -->
+</div><!-- end div class="row"-->
+
+{% endblock %}
+
+<!-- 分页 -->
+{% block pager %}
+<nav>
+    <ul class="pager pagination-lg">
+        {% if pagination.page_down.enable %}
+            <li class="previous">
+            <a href="?page={{ pagination.page_down.value }}">上一页</a>
+        {% else %}
+            <li class="previous disabled">
+            <a>上一页</a>
+        {% endif %}
+        </li>
+
+        {% if pagination.page_up.enable %}
+            <li class="next">
+            <a href="?page={{ pagination.page_up.value }}">下一页</a>
+        {% else %}
+            <li class="next disabled">
+            <a>下一页</a>
+        {% endif %}
+        </li>
+    </ul>
+</nav>
+{% endblock %}
