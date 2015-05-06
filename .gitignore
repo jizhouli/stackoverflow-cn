@@ -58,3 +58,5 @@ target/
 
 # temp file
 *~
+
+*.swp
