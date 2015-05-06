@@ -10,10 +10,21 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.http import HttpResponseRedirect
 
-from posts.models import Posts, Users, MetaTag
+from posts.models import Posts, Posts1, Posts2, Posts3, Users, MetaTag
 
 # add counter to template script
 import itertools
+
+def _post_router(id):
+    id = int(id)
+    if id < 5885814:
+        return Posts
+    elif id < 11705308:
+        return Posts1
+    elif id < 17537164:
+        return Posts2
+    else:
+        return Posts3
 
 ### dev interface
 
@@ -58,6 +69,9 @@ def index(request):
 
 ### tag wiki
 
+# url map
+# ^wiki/    wiki_index.html
+# ^wiki/(.+)/   wiki.html
 def wiki(request, param='index'):
     if param == "index":
         # REDIRECT search request to restful url
@@ -116,11 +130,10 @@ def wiki(request, param='index'):
         # /wiki/404/ -> ['', 'wiki', '404', '']
         # /wiki/aaa/bbb -> /wiki/aaa -> /wiki
         path_split = request.path_info.split('/')
-        print path_split
         wiki_index_path = '/'.join(path_split[:len(path_split)-2])
         return HttpResponseRedirect(wiki_index_path)
     except Exception, e:
-        return render_to_response('404.html', {})
+        return render_to_response('404.html', {'request':request})
 
 ### tag questions
 
@@ -156,6 +169,9 @@ def _pagination(page_max, page, page_size, page_min=1):
             }
     return pagination
 
+# url map
+# ^questions/tagged/    questions_tagged_index.html
+# ^questions/tagged/(.+)/
 def tagged(request, param = "index"):
     if param == "index":
         # REDIRECT search request to restful url
@@ -196,33 +212,67 @@ def tagged(request, param = "index"):
                 })
 
     # show tag search result page
+    page = request.GET.get('page', '1')
+    page = _validate_page(page)
+    page_size = request.GET.get('page_size', '50')
+    page_size = _validate_page(page_size)
+
+    post_max = Posts.objects.filter(tags__icontains=param).count()
+    page_max = _divide_ceiling(post_max, page_size)
+    pagination = _pagination(page_max, page, page_size)
+    # REDIRCT exceeding page number to last page
+    if page > page_max:
+        return HttpResponseRedirect("%s?page=%s" % (request.path_info, page_max))
+
+    offset_begin = (page-1)*page_size
+    offset_end = offset_begin + page_size
+
     try:
         #TODO get questions belong to a tag, then list them
-        posts = Posts.objects.filter(tags__icontains=param)[:100]
-        return render_to_response('raw_search.html', {'posts': posts, 'query': param})
+        questions = Posts.objects.filter(tags__icontains=param)[offset_begin:offset_end]
+        for i in range(len(questions)):
+            tags_str = questions[i].tags
+            questions[i].tags = tags_str[1:len(tags_str)-1].split('><')
+        return render_to_response('questions_tagged.html', 
+                {
+                    'posts': questions, 
+                    'query': param,
+                    'pagination': pagination,
+                })
     except Posts.DoesNotExist:
-        return render_to_response('404.html', {})
+        return render_to_response('404.html', {'request':request})
 
 ### Q&A
 
+# url map
+# ^questions/
+# ^questions/(\d+)/ questions.html
 def questions(request, param='index'):
     if param == 'index':
         return HttpResponse('question index page placeholder!')
 
     try:
-        question = Posts.objects.get(id=param)
+        question = _post_router(id=param).objects.get(id=param)
     except Posts.DoesNotExist:
-        return render_to_response('404.html', {})
+        return render_to_response('404.html', {'request':request})
 
-    author = Users.objects.get(id=question.owneruserid)
+    
+    try:
+        author = Users.objects.get(id=question.owneruserid)
+    except Users.DoesNotExist, e:
+        author = Users.objects.get(id=1)
+
     if len(question.tags) > 2:
         question.tags = question.tags[1:len(question.tags)-1].split('><')
 
     aa_id = question.acceptedanswerid
     answer = {}
-    if aa_id:
-        answer = Posts.objects.get(id=aa_id)
-        answerer = Users.objects.get(id=answer.owneruserid)
+
+    if not aa_id:
+        return render_to_response('404.html', {'request':request})
+
+    answer = _post_router(id=aa_id).objects.get(id=aa_id)
+    answerer = Users.objects.get(id=answer.owneruserid)
 
     return render_to_response('questions.html',
             {

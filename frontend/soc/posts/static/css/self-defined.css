@@ -103,4 +103,85 @@ footer {
     margin-bottom: 4px;
 }
 
+
+
+
+
+.question-summary {
+  overflow: hidden;
+  padding: 15px 0;
+  float: left;
+  width: 728px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.question-summary {
+  padding: 12px 0 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.content-padding {
+  margin-top: 15px;
+}
+
+#questions {
+  clear: both;
+  float: left;
+  width: 728px;
+  margin-bottom: 20px;
+}
+
+.statscontainer {
+  width: 78px;
+  float: left;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+
+.statsarrow {
+  float: right;
+  height: 13px;
+  width: 7px;
+  margin-top: 12px;
+}
+
+.stats {
+  margin: 0 0 0 0;
+  width: 58px;
+}
+
+.vote {
+  text-align: center;
+}
+
+.statscontainer .status {
+  padding: 7px 0 5px 0;
+  font-size: 11px;
+}
+.answered {
+  color: #4c9067;
+  background-color: #75845c;
+  color: #fff;
+}
+.status {
+  padding: 0;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.statscontainer .views {
+  width: 58px;
+}
+.views {
+  padding-top: 4px;
+  text-align: center;
+}
+
+.summary {
+  float: left;
+  width: 630px;
+}
+
+
+
 /* css end */
