@@ -17,10 +17,10 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] design web ui/ue
 - [ ] translate titles to Chinese
 - [ ] sql2nosql: store posts from mysql to mongodb with all q/a in a record 
-- [ ] crawling tag description
+- [x] crawling tag description
 - [x] register domain address
 - [x] buy aliyun ECS
-- [ ] website put on record
+- [x] website put on record
 - [ ] build inverted index of tag column
 
 ###Issues
