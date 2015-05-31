@@ -22,7 +22,7 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [ ] build inverted index of tag column
 - [ ] translate titles to Chinese
 - [ ] sql2nosql: store posts from mysql to mongodb with all q/a in a record 
-- [ ] modify the structure of website
+- [ ] modify the structure of website(delete front page)
 
 ###Issues
 - [x] python parse large xml
