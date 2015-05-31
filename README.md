@@ -29,6 +29,6 @@ A website that translates stackoverflow articles to chinese for English bad prog
 - [x] mysql bulk insert
 - [x] large data translation: translate title and add web translation toolkit to the page
 - [x] bootstrap usage
-- [ ] Django WSGI deployment
+- [x] Django WSGI deployment
 - [ ] investigate Google and Baidu ad union
 
