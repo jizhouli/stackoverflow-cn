@@ -55,7 +55,7 @@
             {% for tag in tag_list %}
             <tr>
                 <td scope="row" class="col-md-1">{{ iterator.next | add:1 }}</td>
-                <th class="col-md-1"><a href="/questions/tagged/{{ tag.name }}">{{ tag.name }}</a></th>
+                <th class="col-md-1"><a href="/questions/tagged/{{ tag.name }}/">{{ tag.name }}</a></th>
                 <td class="col-md-1">{{ tag.sum }}</td>
                 <td class="col-md-9">{{ tag.excerpt }}</td>
             </tr>
